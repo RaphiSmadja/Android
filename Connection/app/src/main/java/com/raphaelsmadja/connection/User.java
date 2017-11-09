@@ -47,8 +47,4 @@ public class User {
                 ", password='" + password + '\'' +
                 '}';
     }
-
-    public static void checkEmail(){
-
-    }
 }

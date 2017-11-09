@@ -4,8 +4,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+
+import java.util.regex.Pattern;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,14 +25,23 @@ public class MainActivity extends AppCompatActivity {
         String editEmailValue = emailText.getText().toString();
         EditText passwordText = (EditText) findViewById(R.id.passwordText);
         String editPasswordValue = passwordText.getText().toString();
-        testCheckEmail(editEmailValue);
+        isValidEmail(editEmailValue);
     }
 
-    public boolean testCheckEmail(String editEmailValue){
-        if (editEmailValue.isEmpty()) {
+    public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                    "(" +
+                    "\\." +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                    ")+"
+    );
+
+    private boolean isValidEmail(String email) {
+        if (TextUtils.isEmpty(email)) {
             return false;
         } else {
-            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+            return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
         }
     }
 
