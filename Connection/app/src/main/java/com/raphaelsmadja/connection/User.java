@@ -9,8 +9,17 @@ public class User {
     private String email;
     private String password;
 
+    public User(){
+
+    }
     public User(int id, String email, String password) {
         this.id = id;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String email, String password) {
+        id += 1;
         this.email = email;
         this.password = password;
     }

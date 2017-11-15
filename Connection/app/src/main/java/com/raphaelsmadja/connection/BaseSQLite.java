@@ -10,9 +10,6 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class BaseSQLite extends SQLiteOpenHelper {
-    private static final int VERSION_BDD = 1;
-    private static final String NOM_BDD = "user.db";
-
     private static final String TABLE_USERS = "table_users";
     private static final String COL_ID = "Id";
     private static final String COL_EMAIL = "Email";
