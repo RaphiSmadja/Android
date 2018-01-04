@@ -5,7 +5,9 @@ import org.junit.Test;
 import java.util.regex.Pattern;
 
 import static com.raphaelsmadja.connection.MainActivity.EMAIL_ADDRESS_PATTERN;
-import static org.junit.Assert.*;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
+
 
 /**
  * Example local unit test, which will execute on the development machine (host).
