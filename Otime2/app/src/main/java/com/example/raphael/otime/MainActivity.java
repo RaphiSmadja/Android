@@ -20,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     UserBDD userBdd = new UserBDD(this);
-    Date currentTime = Calendar.getInstance().getTime();
-    User user = new User("raphael-smadja@hotmail.fr","Raphael","Smadja",currentTime);
+    User user = new User("raphael-smadja@hotmail.fr","Raphael","Smadja");
 
     public void goToFormToAddTask(View view) {
         insertUserToBdd(user);
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void insertUserToBdd(User user){
-        /**TODO beug insertUserToBddCheck**/
+        /*TODO beug insertUserToBddCheck*/
         userBdd.open();
         userBdd.insertUser(user);
         User userFromBdd = userBdd.getUserWithEmail(user.getEmail());
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, userFromBdd.toString(), Toast.LENGTH_LONG).show();
             userBdd.selectUser();
         }
+        userBdd.close();
     }
 
     public boolean checkInBdd(){

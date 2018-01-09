@@ -59,7 +59,6 @@ public class UserBDD {
         values.put(COL_EMAIL, user.getEmail());
         values.put(COL_FIRSTNAME, user.getFirstname());
         values.put(COL_LASTNAME, user.getLastname());
-        values.put(COL_DATEOFCREATIONUSER, String.valueOf(user.getDateOfCreation()));
         //on insère l'objet dans la BDD via le ContentValues
         return bdd.insert(TABLE_USERS, null, values);
     }
@@ -86,7 +85,8 @@ public class UserBDD {
 
     public User getUserWithEmail(String email){
         //Récupère dans un Cursor les valeurs correspondant à un user contenu dans la BDD (ici on sélectionne le user grâce à son email)
-        Cursor c = bdd.query(TABLE_USERS, new String[] {COL_ID, COL_FIRSTNAME,COL_LASTNAME, COL_EMAIL}, COL_EMAIL + " LIKE \"" + email +"\"", null, null, null, null);
+        Cursor c = bdd.query(TABLE_USERS, new String[] {COL_ID, COL_EMAIL,COL_FIRSTNAME,COL_LASTNAME},
+                COL_EMAIL + " LIKE \"" + email +"\"", null, null, null, null);
         return cursorToUser(c);
     }
 

@@ -17,7 +17,7 @@ public class User {
         this.dateOfCreation = dateOfCreation;
     }
 
-    public User(String email, String firstname, String lastname, Date dateOfCreation) {
+    public User(String email, String firstname, String lastname) {
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
